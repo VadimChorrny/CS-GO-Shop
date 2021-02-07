@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Shop.h"
+#include "Knife.h"
 
 #define CLEEN system("cls");
 #define QUIT system("cls"); system("pause");
@@ -11,9 +12,8 @@ using namespace std;
 void showMenu()
 {
 	CLEEN;
-	AddSkin skin;
+	Knife k("Kerambit","Ultra-rar","100$");
 	string action;
-	const char* dir = "Students.db";
 	cout << " ------------------------" << endl;
 	cout << "| 1. Add product in db   |" << endl;
 	cout << " ------------------------" << endl;
@@ -27,20 +27,15 @@ void showMenu()
 	getline(cin, action);
 	if (action == "1")
 	{
-		skin.createTable(dir);
-		skin.createDB(dir);
-		skin.insertData(dir);
+		k.input();
 	}
 	if (action == "2")
 	{
-		skin.deleteData(dir);
+		k.buySkin();
 	}
 	if (action == "3")
 	{
-		skin.updateData(dir);
-		skin.selectData(dir);
-		skin.updateData(dir);
-
+		k.showSkin();
 	}
 	if (action == "4")
 	{
