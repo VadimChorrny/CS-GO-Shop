@@ -1,35 +1,32 @@
 #pragma once
-#include "Shop.h"
-#include <fstream>
 
-struct CData
+#include "Shop.h"
+
+struct PData
 {
-	string name_, rare_, type_;
-	float f_value_;
-	size_t price_;
-	
+	string model_, type_, paint_, rare_;
+	size_t MAX_BULLETS, price_;
+	bool isSilencer = false;
+	float f_value;
 };
 
-class Knife : public Skin
+class Pistols : public Skin
 {
 public:
-	Knife(const string& type,const string& rare,const size_t& price,const float& f)
-	{
-		setTypeSkin(type);
-		setRareSkin(rare);
-		setPriceSkin(price);
-		setFValue(f);
-	}
-	Knife() = default;
+	Pistols() = default;
 	void input() override;
 	void showSkin() override;
 	void buySkin() override;
 	void setTypeSkin(const string& type) override;
+	void setModel(const string& model);
+	void setPaint(const string& paint);
+	void setMaxBullets(const size_t& max);
 	void setRareSkin(const string& rare) override;
 	void setFValue(const float& f) override;
+	void setSeler(const bool& s);
 	void setPriceSkin(const size_t& price) override;
 	void print() const override;
 private:
-	CData data_;
+	PData p;
 };
 
